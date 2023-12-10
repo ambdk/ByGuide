@@ -1,0 +1,63 @@
+﻿@page
+@model ByGuide.Pages.Post.GetAllPostsModel
+@{
+}
+
+<h1>Indlæg</h1>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Titel
+            </th>
+            <th>
+                Beskrivelse
+            </th>
+            <th>
+                Kategori
+            </th>
+            <th>
+                Adresse
+            </th>
+            <th>
+                Billed URL
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Posts != null)
+        {
+            foreach (var post in Model.Posts)
+            {
+                <tr>
+                    <td>
+                        @post.Id
+                    </td>
+                    <td>
+                        @post.Title
+                    </td>
+                    <td>
+                        @post.Description
+                    </td>
+                    <td>
+                        @post.Category
+                    </td>
+                    <td>
+                        @post.Address
+                    </td>
+                    <td>
+                        @post.ImageURL
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<p>
+    <a class="btn btn-primary" asp-page="CreatePost">Opret nyt indlæg</a>
+</p>
