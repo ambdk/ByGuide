@@ -19,12 +19,21 @@ namespace ByGuide.Pages.Post
 
         #region Properties
         public List<Models.Post>? Posts { get; private set; }
+        
+        [BindProperty]
+        public string SearchString { get; set; }
         #endregion
 
         #region Methods
         public void OnGet()
         {
             Posts = _postService.GetPosts();
+        }
+
+        public IActionResult OnPostTitleSearch()
+        {
+            Posts = _postService.TitleSearch(SearchString).ToList();
+            return Page();
         }
         #endregion
     }

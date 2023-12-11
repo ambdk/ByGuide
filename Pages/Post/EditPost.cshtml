@@ -1,15 +1,12 @@
-﻿@page
-@model ByGuide.Pages.Post.CreatePostModel
+﻿@page "{id:int}"
+@model ByGuide.Pages.Post.EditPostModel
 @{
 }
-
-<h1>Opret nyt indlæg</h1>
 
 <form method="post">
     <div class="form-group">
         <label asp-for="Post.Id" class="control-label"></label>
-        <input asp-for="Post.Id" class="form-control" />
-        <span asp-validation-for="Post.Id" class="text-danger"></span>
+        <input asp-for="Post.Id" class="form-control" readonly="@(true)" />
     </div>
     <div class="form-group">
         <label asp-for="Post.Title" class="control-label"></label>
@@ -18,13 +15,8 @@
     </div>
     <div class="form-group">
         <label asp-for="Post.Description" class="control-label"></label>
-        <input asp-for="Post.Description" class="form-control" />
+        <textarea asp-for="Post.Description" class="form-control" style="height: 150px;"></textarea>
         <span asp-validation-for="Post.Description" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Post.Category" class="control-label"></label>
-        <input asp-for="Post.Category" class="form-control" />
-        <span asp-validation-for="Post.Category" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Post.Address" class="control-label"></label>
@@ -39,7 +31,11 @@
 
     <p>
         <div class="form-group">
-            <input type="submit" value="Opret" class="btn btn-primary" />
+            <input type="submit" value="Opdater" class="btn btn-primary" />
         </div>
     </p>
 </form>
+
+<p>
+    <a asp-page="/Post/GetAllPosts">Tilbage til oversigten</a>
+</p>
