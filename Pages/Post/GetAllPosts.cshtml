@@ -1,0 +1,76 @@
+﻿@page
+@model ByGuide.Pages.Post.GetAllPostsModel
+@{
+}
+
+<h1>Indlæg</h1>
+
+<form method="post">
+    <div class="input-group mb-3">
+        <input autofocus asp-for="SearchString" class="form-control mr-1" placeholder="Indtast søgeord" />
+        <input type="submit" asp-page-handler="TitleSearch" value="Søg" class="btn btn-primary" />
+    </div>
+</form>
+
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Titel
+            </th>
+            <th>
+                Beskrivelse
+            </th>
+            <th>
+                Kategori
+            </th>
+            <th>
+                Adresse
+            </th>
+            <th>
+                Billed URL
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Posts != null)
+        {
+            foreach (var post in Model.Posts)
+            {
+                <tr>
+                    <td>@post.Id
+                    </td>
+                    <td>
+                        @post.Title
+                    </td>
+                    <td>
+                        @post.Description
+                    </td>
+                    <td>
+                        @post.Category
+                    </td>
+                    <td>
+                        @post.Address
+                    </td>
+                    <td>
+                        @post.ImageURL
+                    </td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" type="button" title="Rediger" asp-page="EditPost" 
+                         asp-route-id="@post.Id">Rediger</a>
+                        <a class="btn btn-danger btn-sm" type="button" title="Slet" asp-page="DeletePost"
+                         asp-route-id="@post.Id">Slet</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<p>
+    <a class="btn btn-primary" asp-page="CreatePost">Opret nyt indlæg</a>
+</p>
