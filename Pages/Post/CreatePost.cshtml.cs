@@ -1,3 +1,8 @@
+// By: Jesper Højlund
+// Description: Model for creating new posts. It facilitates the creation of a post,
+// handling form submission and validation. Upon successful submission, it adds the new
+// post using IPostService and redirects to the "GetAllPosts" page.
+
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
