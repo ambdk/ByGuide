@@ -32,6 +32,7 @@ namespace ByGuide.Service
         #region Methods
         public void AddPost(Post post)
         {
+            post.Id = GenerateUniqueId();
             _posts.Add(post);
             JsonFilePostService.SaveJsonPosts(_posts);
         }
@@ -107,6 +108,21 @@ namespace ByGuide.Service
             }
 
             return titleSearch;
+        }
+        #endregion
+
+        #region Helper Methods
+        private int GenerateUniqueId()
+        {
+            int maxId = 0;
+            foreach (Post existingPost in _posts)
+            {
+                if (existingPost.Id.HasValue && existingPost.Id.Value > maxId)
+                {
+                    maxId = existingPost.Id.Value;
+                }
+            }
+            return maxId + 1;
         }
         #endregion
     }
