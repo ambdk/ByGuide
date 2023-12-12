@@ -31,8 +31,6 @@ namespace ByGuide.Models
 
 		#region Properties
 		[Display(Name = "Post Id")]
-		[Required(ErrorMessage = "Der skal angives et ID til en post")]
-		[Range(typeof(int), "1", "10000", ErrorMessage = "Id skal være mellem (1) og (2)")]
 		public int? Id { get; set; }
 
 		[Display(Name = "Titel")]
