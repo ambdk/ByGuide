@@ -3,7 +3,7 @@
     "Id": 1,
     "Title": "Odd Fellow Julekoncert",
     "Description": "En juletradition i Roskilde Domkirke er Odd Fellows velg\u00F8renhedskoncert. I \u00E5r kan du opleve Anne Dorte Michelsen synge julen ind. Midt i det m\u00F8rke vi g\u00E5r ind i, n\u00E5r vinteren for alvor rammer, er sangene som et lys vi kan t\u00E6nde for hinanden.",
-    "Category": "Koncert",
+    "Category": "Kultur og Historie",
     "Address": "Roskilde Domkirke",
     "ImageURL": "https://saintcyrils.church/wp-content/uploads/2020/12/Christmas-Concert-3.jpg"
   },
@@ -11,7 +11,7 @@
     "Id": 2,
     "Title": "Jul p\u00E5 Ryegaard",
     "Description": "Til Jul p\u00E5 Ryegaard kan du tage familien med ud og k\u00F8re hestevogn for at f\u00E6lde \u00E5rets juletr\u00E6. Tilbage i Ryegaard Park kan I bes\u00F8ge Brandspr\u00F8jtehuset, hvor der serveres \u00E6bleskiver, gl\u00F8gg, kakao. Bes\u00F8g ogs\u00E5 det lille hyggelige julemarked.",
-    "Category": "Marked/Byfest",
+    "Category": "Begivenheder og Aktiviteter",
     "Address": "Ryegaard Park",
     "ImageURL": null
   },
@@ -19,7 +19,7 @@
     "Id": 3,
     "Title": "Gimle Comedy Club - Open Mic",
     "Description": "Open Mic p\u00E5 Gimle er tilbage og stand-up-komikerne er ved at koge over af id\u00E9er og jokes, der skal afpr\u00F8ves. Gimles Comedy Club holder til i Gimles K\u00E6lder, hvor der er god plads til g\u00E6ster med hang til et godt grin.",
-    "Category": "Show/stand up",
+    "Category": "Kultur og Historie",
     "Address": "Gimle",
     "ImageURL": null
   }
