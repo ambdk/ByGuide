@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IPostService, PostService>();
+builder.Services.AddTransient<JsonFilePostService>();
 
 var app = builder.Build();
 

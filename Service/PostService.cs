@@ -1,4 +1,11 @@
-﻿using ByGuide.MockData;
+﻿// By: Jesper Højlund
+// Description: This file contains the PostService class, responsible for managing
+// Post objects in the ByGuide application. It handles adding, updating, deleting,
+// and retrieving posts, and integrates with JsonFilePostService for JSON-based data
+// storage and retrieval.
+
+
+using ByGuide.MockData;
 using ByGuide.Models;
 
 namespace ByGuide.Service
@@ -10,17 +17,23 @@ namespace ByGuide.Service
         #endregion
 
         #region Constructor
-        public PostService()
+        public PostService(JsonFilePostService jsonFilePostService)
         {
-            _posts = MockPosts.GetMockPosts();
+            JsonFilePostService = jsonFilePostService;
+            _posts = JsonFilePostService.GetJsonPosts().ToList();
+            //_posts = MockPosts.GetMockPosts();
         }
         #endregion
 
+        #region Properties
+        private JsonFilePostService JsonFilePostService { get; set; }
+        #endregion
+
         #region Methods
-        
         public void AddPost(Post post)
         {
             _posts.Add(post);
+            JsonFilePostService.SaveJsonPosts(_posts);
         }
         
         public void UpdatePost(Post post)
@@ -38,28 +51,35 @@ namespace ByGuide.Service
                         p.ImageURL = post.ImageURL;
                     }
                 }
+                JsonFilePostService.SaveJsonPosts(_posts);
             }
         }
         
         public Post DeletePost(int? id)
         {
+            Post? postToBeDeleted = null;
             foreach (Post post in _posts)
             {
                 if (post.Id == id)
                 {
-                    _posts.Remove(post);
-                    return post;
+                    postToBeDeleted = post;
+                    break;
                 }
             }
 
-            return null;
+            if (postToBeDeleted != null)
+            {
+                _posts.Remove(postToBeDeleted);
+                JsonFilePostService.SaveJsonPosts(_posts);
+            }
+            return postToBeDeleted;
         }
         
         public Post GetPost(int id)
         {
             foreach (Post post in _posts)
             {
-                if (post.Id != id)
+                if (post.Id == id)
                 {
                     return post;
                 }
