@@ -15,7 +15,9 @@
     </div>
     <div class="form-group">
         <label asp-for="Post.Category" class="control-label"></label>
-        <input asp-for="Post.Category" class="form-control" />
+        <select asp-for="Post.Category" asp-items="@(new SelectList(Categories.AllowedCategories))">
+            <option value="">Vælg en kategori</option>
+        </select>
         <span asp-validation-for="Post.Category" class="text-danger"></span>
     </div>
     <div class="form-group">
