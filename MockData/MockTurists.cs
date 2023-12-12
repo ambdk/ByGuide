@@ -1,8 +1,8 @@
-﻿using TuristInfoV1.Models;
-using TuristInfoV1.MockData;
+﻿using ByGuide.Models;
+using ByGuide.MockData;
 using Microsoft.Extensions.Hosting;
 
-namespace TuristInfoV1.MockData
+namespace ByGuide.MockData
 {
 	public class MockTurist
 	{

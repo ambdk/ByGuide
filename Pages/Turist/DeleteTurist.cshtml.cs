@@ -1,8 +1,8 @@
-using TuristInfoV1.Services;
+using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace TuristInfoV1.Pages.Tursit
+namespace ByGuide.Pages.Tursit
 {
 	public class DeleteTuristModel : PageModel
 	{

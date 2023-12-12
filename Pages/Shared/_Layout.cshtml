@@ -38,6 +38,23 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Events">Events</a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/GetAllPosts">Get all posts</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/CreatePost">Create post</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/EditPost">Edit post</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/DeletePost">Delete post</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/GetAllTurists">Get all turists</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/CreateTurist">Create turist</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/EditTurist">Edit turist</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/DeleteTurist">Delete turist</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
