@@ -1,0 +1,32 @@
+﻿
+
+@page
+@model ByGuide.Pages.Post.GetPostModel
+
+@*
+    Usage:
+    This view displays the details of a post specified by its ID.
+    Access this page by navigating to: /GetPost?PostId={id}
+    Example: /GetPost?PostId=1 to display the post with ID 1.
+*@
+
+@{
+    ViewData["Title"] = "Post Details";
+}
+
+<h2>Post Details</h2>
+
+@if (Model.Post == null)
+{
+    <p>Post not found.</p>
+}
+else
+{
+    <div>
+        <h3>@Model.Post.Title</h3>
+        <img src="@Model.Post.ImageURL" alt="Post Image" style="max-width: 100%; height: auto;">
+        <p><strong>Description:</strong> @Model.Post.Description</p>
+        <p><strong>Category:</strong> @Model.Post.Category</p>
+        <p><strong>Address:</strong> @Model.Post.Address</p>
+    </div>
+}
