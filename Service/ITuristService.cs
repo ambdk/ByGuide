@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Hosting;
-using TuristInfoV1.Models;
+using ByGuide.Models;
 
 
-namespace TuristInfoV1.Services
+namespace ByGuide.Service
 {
 	public interface ITuristService
 	{
