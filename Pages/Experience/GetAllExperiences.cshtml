@@ -3,84 +3,51 @@
 @{
 }
 
+
 <h1>Oplevelser</h1>
 
-<table class="table table-bordered table-hover table-striped">
-    <thead>
-        <tr>
-            <th>
-                Id
-            </th>
-            <th>
-                Titel
-            </th>
-            <th>
-                Beskrivelse
-            </th>
-            <th>
-                Kategori
-            </th>
-            <th>
-                Billetpris
-            </th>
-            <th>
-                Adresse
-            </th>
-            <th>
-                Link
-            </th>
-            <th>
-                Handicapvenlig
-            </th>
-            <th>
-                Billed URL
-            </th>
-            <th>
-                Åbningstider
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.Experiences != null)
+<div class="container">
+    @if (Model.Experiences != null)
+    {
+        foreach (var experience in Model.Experiences)
         {
-            foreach (var experience in Model.Experiences)
-            {
-                <tr>
-                    <td>
-                        @experience.Id
-                    </td>
-                    <td>
-                        @experience.Title
-                    </td>
-                    <td>
-                        @experience.Description
-                    </td>
-                    <td>
-                        @experience.Category
-                    </td>
-                    <td>
-                        @experience.AdmissionPrice
-                    </td>
-                    <td>
-                        @experience.Address
-                    </td>
-                    <td>
-                        @experience.ExternalLink
-                    </td>
-                    <td>
-                        @experience.HandicapAccesible
-                    </td>
-                    <td>
-                        @experience.ImageURL
-                    </td>
-                    <td>
-                        @foreach (var day in experience.OpeningHours)
+            <div class="card mb-3">
+                <div class="card-header bg-primary">
+                    <h3 class="card-title text-white">#@experience.Id - @experience.Title</h3>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(experience.ImageURL))
+                    {
+                        <div style="height: 150px; overflow: hidden; width: 100%;">
+                            <img src="@experience.ImageURL" class="img-fluid" alt="Billede" style="height: 100%; width: 100%; object-fit: cover; object-position: center;">
+                        </div>
+                    }
+                    <p><h5 class="card-title">Kategori: @experience.Category</h5></p>
+                    <h5 class="card-title">Pris: @experience.AdmissionPrice kr.</h5>
+                    <p class="card-text">@experience.Description</p>
+                    <p class="card-text"><strong>Adresse:</strong><br />@experience.Address</p>
+                    <p class="card-text">
+                        <strong>Åbningstider:</strong><br>
+                        @if (experience.OpeningHours != null && experience.OpeningHours.Any())
                         {
-                            <div>@day.Key: @day.Value</div>
+                            foreach (var day in experience.OpeningHours)
+                            {
+                                <span>@day.Key: @day.Value</span><br>
+                            }
                         }
-                    </td>
-                </tr>
-            }
+                        else
+                        {
+                            <span class="text-muted">Ingen åbningstider angivet</span>
+                        }
+                    </p>
+                    <p class="card-text">
+                        Handicapvenlig: @(experience.HandicapAccesible ? "Ja" : "Nej")
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="@experience.ExternalLink" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Besøg link</a>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    }
+</div>
