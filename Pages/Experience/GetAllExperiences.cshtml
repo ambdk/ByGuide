@@ -1,0 +1,86 @@
+﻿@page
+@model ByGuide.Pages.Experience.GetAllExperiencesModel
+@{
+}
+
+<h1>Oplevelser</h1>
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Titel
+            </th>
+            <th>
+                Beskrivelse
+            </th>
+            <th>
+                Kategori
+            </th>
+            <th>
+                Billetpris
+            </th>
+            <th>
+                Adresse
+            </th>
+            <th>
+                Link
+            </th>
+            <th>
+                Handicapvenlig
+            </th>
+            <th>
+                Billed URL
+            </th>
+            <th>
+                Åbningstider
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Experiences != null)
+        {
+            foreach (var experience in Model.Experiences)
+            {
+                <tr>
+                    <td>
+                        @experience.Id
+                    </td>
+                    <td>
+                        @experience.Title
+                    </td>
+                    <td>
+                        @experience.Description
+                    </td>
+                    <td>
+                        @experience.Category
+                    </td>
+                    <td>
+                        @experience.AdmissionPrice
+                    </td>
+                    <td>
+                        @experience.Address
+                    </td>
+                    <td>
+                        @experience.ExternalLink
+                    </td>
+                    <td>
+                        @experience.HandicapAccesible
+                    </td>
+                    <td>
+                        @experience.ImageURL
+                    </td>
+                    <td>
+                        @foreach (var day in experience.OpeningHours)
+                        {
+                            <div>@day.Key: @day.Value</div>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
