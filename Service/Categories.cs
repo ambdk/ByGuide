@@ -1,5 +1,5 @@
-﻿// By: Jesper Højlund
-// Simple static class to be used in razorviews to ensure and validate categories.
+﻿
+// By: Jesper Højlund
 
 namespace ByGuide.Service
 {

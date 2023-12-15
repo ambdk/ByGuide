@@ -1,13 +1,8 @@
-﻿// By: Jesper Højlund
-// Description: This file contains the PostService class, responsible for managing
-// Post objects in the ByGuide application. It handles adding, updating, deleting,
-// and retrieving posts, and integrates with JsonFilePostService for JSON-based data
-// storage and retrieval.
-
+﻿
+// By: Jesper Højlund
 
 using ByGuide.MockData;
 using ByGuide.Models;
-using Microsoft.VisualBasic;
 
 namespace ByGuide.Service
 {
@@ -37,7 +32,41 @@ namespace ByGuide.Service
             _posts.Add(post);
             JsonFilePostService.SaveJsonPosts(_posts);
         }
-        
+
+        public Post GetPost(int id)
+        {
+            foreach (Post post in _posts)
+            {
+                if (post.Id == id)
+                {
+                    return post;
+                }
+            }
+
+            return null;
+        }
+
+        public List<Post> GetPosts()
+        {
+            return _posts;
+        }
+
+        public IEnumerable<Post> TitleSearch(string str)
+        {
+            List<Post> titleSearch = new List<Post>();
+            foreach (Post post in _posts)
+            {
+                if (string.IsNullOrEmpty(str) ||
+                    post.Title.ToLower().Contains(str.ToLower()) ||
+                    post.Description.ToLower().Contains(str.ToLower()))
+                {
+                    titleSearch.Add(post);
+                }
+            }
+
+            return titleSearch;
+        }
+
         public void UpdatePost(Post post)
         {
             if (post != null)
@@ -53,6 +82,7 @@ namespace ByGuide.Service
                         p.ImageURL = post.ImageURL;
                     }
                 }
+
                 JsonFilePostService.SaveJsonPosts(_posts);
             }
         }
@@ -74,41 +104,8 @@ namespace ByGuide.Service
                 _posts.Remove(postToBeDeleted);
                 JsonFilePostService.SaveJsonPosts(_posts);
             }
+
             return postToBeDeleted;
-        }
-        
-        public Post GetPost(int id)
-        {
-            foreach (Post post in _posts)
-            {
-                if (post.Id == id)
-                {
-                    return post;
-                }
-            }
-
-            return null;
-        } 
-        
-        public List<Post> GetPosts()
-        {
-            return _posts;
-        }
-        
-        public IEnumerable<Post> TitleSearch(string str)
-        {
-            List<Post> titleSearch = new List<Post>();
-            foreach (Post post in _posts)
-            {
-                if (string.IsNullOrEmpty(str) ||
-                    post.Title.ToLower().Contains(str.ToLower()) ||
-                    post.Description.ToLower().Contains(str.ToLower()))
-                {
-                    titleSearch.Add(post);
-                }
-            }
-
-            return titleSearch;
         }
         #endregion
 

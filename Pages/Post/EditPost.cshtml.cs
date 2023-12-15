@@ -1,7 +1,5 @@
+
 // By: Jesper Højlund
-// Description: This class provides the functionality for editing a post. It loads the
-// post details for editing and handles post updates on form submission, leveraging
-// IPostService. If the post is not found, it redirects to a "NotFound" page.
 
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;

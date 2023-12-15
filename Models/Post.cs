@@ -1,9 +1,5 @@
-﻿// By: Jesper Højlund
-// Description: The Post class represents a post entity with properties for ID, title,
-// description, category, address, and image URL. It includes validation annotations
-// to ensure required fields are correctly populated, and a range check for the ID.
-// This class serves as the data structure for post-related operations within the
-// application.
+﻿
+// By: Jesper Højlund
 
 using System.ComponentModel.DataAnnotations;
 

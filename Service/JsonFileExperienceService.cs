@@ -6,10 +6,10 @@ using ByGuide.Models;
 
 namespace ByGuide.Service
 {
-    public class JsonFilePostService
+    public class JsonFileExperienceService
     {
         #region Constructor
-        public JsonFilePostService(IWebHostEnvironment webHostEnvironment)
+        public JsonFileExperienceService(IWebHostEnvironment webHostEnvironment)
         {
             WebHostEnvironment = webHostEnvironment;
         }
@@ -17,17 +17,17 @@ namespace ByGuide.Service
 
         #region Properties
         public IWebHostEnvironment WebHostEnvironment { get; }
-        private string JsonFileName 
+        private string JsonFileName
         {
             get
             {
-                return Path.Combine(WebHostEnvironment.WebRootPath, "Data", "Posts.json");
+                return Path.Combine(WebHostEnvironment.WebRootPath, "Data", "Experiences.json");
             }
         }
         #endregion
 
         #region Methods
-        public void SaveJsonPosts(List<Post> posts)
+        public void SaveJsonExperiences(List<Experience> experiences)
         {
             using (FileStream jsonFileWriter = File.Create(JsonFileName))
             {
@@ -36,15 +36,15 @@ namespace ByGuide.Service
                     SkipValidation = false,
                     Indented = true,
                 });
-                JsonSerializer.Serialize<Post[]>(jsonWriter, posts.ToArray());
+                JsonSerializer.Serialize<Experience[]>(jsonWriter, experiences.ToArray());
             }
         }
 
-        public IEnumerable<Post> GetJsonPosts()
+        public IEnumerable<Experience> GetJsonExperiences()
         {
             using (StreamReader jsonFileReader = File.OpenText(JsonFileName))
             {
-                return JsonSerializer.Deserialize<Post[]>(jsonFileReader.ReadToEnd());
+                return JsonSerializer.Deserialize<Experience[]>(jsonFileReader.ReadToEnd());
             }
         }
         #endregion

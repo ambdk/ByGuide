@@ -1,7 +1,5 @@
+
 // By: Jesper Højlund
-// Description: Handles the display of all posts. It uses IPostService to retrieve and
-// search posts. Includes functionality for a title-based search, displaying results on
-// the same page.
 
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;
