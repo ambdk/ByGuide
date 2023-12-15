@@ -1,8 +1,5 @@
-﻿// By: Jesper Højlund
-// Description: This class handles JSON file operations for Post objects in the ByGuide
-// application. It provides functionality to read from and write to a JSON file,
-// managing persistence of post data. The service utilizes the IWebHostEnvironment for
-// determining the file path, ensuring compatibility with web hosting environments.
+﻿
+// By: Jesper Højlund
 
 using System.Text.Json;
 using ByGuide.Models;

@@ -1,6 +1,5 @@
+
 // By: Jesper Højlund
-// Description: Handles the display of a single post. It uses IPostService to retrieve the 
-// post details based on the provided id.
 
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;

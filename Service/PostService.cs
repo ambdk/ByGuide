@@ -1,9 +1,4 @@
 ﻿// By: Jesper Højlund
-// Description: This file contains the PostService class, responsible for managing
-// Post objects in the ByGuide application. It handles adding, updating, deleting,
-// and retrieving posts, and integrates with JsonFilePostService for JSON-based data
-// storage and retrieval.
-
 
 using ByGuide.MockData;
 using ByGuide.Models;

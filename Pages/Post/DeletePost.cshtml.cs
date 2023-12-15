@@ -1,7 +1,5 @@
+
 // By: Jesper Højlund
-// Description: Model for deleting a specific post. It facilitates loading the post
-// based on an ID and processing its deletion upon confirmation. Redirects to "NotFound"
-// page if the post does not exist.
 
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;

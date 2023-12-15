@@ -9,6 +9,7 @@ namespace ByGuide.Service
     {
         #region Methods
         List<Experience> GetItems();
+        void AddExperience(Experience experience);
         #endregion
     }
 }

@@ -24,6 +24,11 @@ namespace ByGuide.Service
         {
             return _experiences;
         }
+
+        public void AddExperience(Experience experience)
+        {
+            _experiences.Add(experience);
+        }
         #endregion
     }
 }
