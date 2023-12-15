@@ -9,7 +9,7 @@ namespace ByGuide.Models
     {
         #region Properties
         [Display(Name = "Oplevelses Id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [Display(Name = "Titel")]
         [Required(ErrorMessage = "Indlægget skal have en titel")]

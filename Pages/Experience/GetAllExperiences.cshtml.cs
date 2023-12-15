@@ -39,7 +39,7 @@ namespace ByGuide.Pages.Experience
         #region Methods
         public void OnGet()
         {
-            Experiences = _experienceService.GetItems();
+            Experiences = _experienceService.GetExperiences();
         }
 
         public IActionResult OnPostSearch()

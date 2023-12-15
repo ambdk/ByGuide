@@ -42,9 +42,13 @@
     {
         foreach (var experience in Model.Experiences)
         {
-            <div class="card mb-3">
-                <div class="card-header bg-primary">
-                    <h3 class="card-title text-white">#@experience.Id - @experience.Title</h3>
+            <div class="card my-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">#@experience.Id - @experience.Title</h3>
+                    <div>
+                        <a class="btn btn-primary btn-sm" type="button" title="Rediger" asp-page="EditExperience" asp-route-id="@experience.Id">Rediger</a>
+                        <a class="btn btn-danger btn-sm" type="button" title="Slet" asp-page="DeleteExperience" asp-route-id="@experience.Id">Slet</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     @if (!string.IsNullOrEmpty(experience.ImageURL))
@@ -57,27 +61,27 @@
                     <h5 class="card-title">Pris: @experience.AdmissionPrice kr.</h5>
                     <p class="card-text">@experience.Description</p>
                     <p class="card-text"><strong>Adresse:</strong><br />@experience.Address</p>
-                    <p class="card-text">
-                        <strong>Åbningstider:</strong><br>
-                        @if (experience.OpeningHours != null && experience.OpeningHours.Any())
+                    <p class="card-text"><strong>Åbningstider:</strong><br>
+                    @if (experience.OpeningHours != null && experience.OpeningHours.Any())
+                    {
+                        foreach (var day in experience.OpeningHours)
                         {
-                            foreach (var day in experience.OpeningHours)
-                            {
-                                <span>@day.Key: @day.Value</span><br>
-                            }
+                            <span>@day.Key: @day.Value</span><br>
                         }
-                        else
-                        {
-                            <span class="text-muted">Ingen åbningstider angivet</span>
-                        }
+                    }
+                    else
+                    {
+                        <span class="text-muted">Ingen åbningstider angivet</span>
+                    }
                     </p>
                     <p class="card-text">
                         Handicapvenlig: @(experience.HandicapAccesible ? "Ja" : "Nej")
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a href="@experience.ExternalLink" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Besøg link</a>
+                    <a href="@experience.ExternalLink" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Læs mere</a>
                 </div>
+
             </div>
         }
     }

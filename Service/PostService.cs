@@ -2,7 +2,6 @@
 
 using ByGuide.MockData;
 using ByGuide.Models;
-using Microsoft.VisualBasic;
 
 namespace ByGuide.Service
 {
@@ -32,7 +31,41 @@ namespace ByGuide.Service
             _posts.Add(post);
             JsonFilePostService.SaveJsonPosts(_posts);
         }
-        
+
+        public Post GetPost(int id)
+        {
+            foreach (Post post in _posts)
+            {
+                if (post.Id == id)
+                {
+                    return post;
+                }
+            }
+
+            return null;
+        }
+
+        public List<Post> GetPosts()
+        {
+            return _posts;
+        }
+
+        public IEnumerable<Post> TitleSearch(string str)
+        {
+            List<Post> titleSearch = new List<Post>();
+            foreach (Post post in _posts)
+            {
+                if (string.IsNullOrEmpty(str) ||
+                    post.Title.ToLower().Contains(str.ToLower()) ||
+                    post.Description.ToLower().Contains(str.ToLower()))
+                {
+                    titleSearch.Add(post);
+                }
+            }
+
+            return titleSearch;
+        }
+
         public void UpdatePost(Post post)
         {
             if (post != null)
@@ -70,40 +103,6 @@ namespace ByGuide.Service
                 JsonFilePostService.SaveJsonPosts(_posts);
             }
             return postToBeDeleted;
-        }
-        
-        public Post GetPost(int id)
-        {
-            foreach (Post post in _posts)
-            {
-                if (post.Id == id)
-                {
-                    return post;
-                }
-            }
-
-            return null;
-        } 
-        
-        public List<Post> GetPosts()
-        {
-            return _posts;
-        }
-        
-        public IEnumerable<Post> TitleSearch(string str)
-        {
-            List<Post> titleSearch = new List<Post>();
-            foreach (Post post in _posts)
-            {
-                if (string.IsNullOrEmpty(str) ||
-                    post.Title.ToLower().Contains(str.ToLower()) ||
-                    post.Description.ToLower().Contains(str.ToLower()))
-                {
-                    titleSearch.Add(post);
-                }
-            }
-
-            return titleSearch;
         }
         #endregion
 
