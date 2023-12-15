@@ -8,6 +8,7 @@ builder.Services.AddSingleton<IPostService, PostService>();
 builder.Services.AddSingleton<IExperienceService, ExperienceService>();
 builder.Services.AddSingleton<ITuristService, TuristService>();
 builder.Services.AddTransient<JsonFilePostService>();
+builder.Services.AddTransient<JsonFileExperienceService>();
 
 var app = builder.Build();
 

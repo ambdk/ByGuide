@@ -1,4 +1,5 @@
-﻿// By: Jesper Højlund
+﻿
+// By: Jesper Højlund
 
 using ByGuide.MockData;
 using ByGuide.Models;
@@ -81,6 +82,7 @@ namespace ByGuide.Service
                         p.ImageURL = post.ImageURL;
                     }
                 }
+
                 JsonFilePostService.SaveJsonPosts(_posts);
             }
         }
@@ -102,6 +104,7 @@ namespace ByGuide.Service
                 _posts.Remove(postToBeDeleted);
                 JsonFilePostService.SaveJsonPosts(_posts);
             }
+
             return postToBeDeleted;
         }
         #endregion

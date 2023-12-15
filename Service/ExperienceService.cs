@@ -13,10 +13,16 @@ namespace ByGuide.Service
         #endregion
 
         #region Constructor
-        public ExperienceService()
+        public ExperienceService(JsonFileExperienceService jsonFileExperienceService)
         {
-            _experiences = MockExperiences.GetMockExperiences();
+            JsonFileExperienceService = jsonFileExperienceService;
+            //_experiences = MockExperiences.GetMockExperiences();
+            _experiences = JsonFileExperienceService.GetJsonExperiences().ToList();
         }
+        #endregion
+
+        #region Properties
+        private JsonFileExperienceService JsonFileExperienceService { get; set; }
         #endregion
 
         #region Methods
@@ -24,6 +30,8 @@ namespace ByGuide.Service
         {
             experience.Id = GenerateUniqueId();
             _experiences.Add(experience);
+            JsonFileExperienceService.SaveJsonExperiences(_experiences);
+
         }
 
         public Experience GetExperience(int id)
@@ -100,21 +108,30 @@ namespace ByGuide.Service
                         e.OpeningHours = experience.OpeningHours;
                     }
                 }
+
+                JsonFileExperienceService.SaveJsonExperiences(_experiences);
             }
         }
 
         public Experience DeleteExperience(int? id)
         {
+            Experience? experienceToBeDeleted = null;
             foreach (Experience experience in _experiences)
             {
                 if (experience.Id == id)
                 {
-                    _experiences.Remove(experience);
-                    return experience;
+                    experienceToBeDeleted = experience;
+                    break;
                 }
             }
 
-            return null;
+            if (experienceToBeDeleted != null)
+            {
+                _experiences.Remove(experienceToBeDeleted);
+                JsonFileExperienceService.SaveJsonExperiences(_experiences);
+            }
+
+            return experienceToBeDeleted;
         }
         #endregion
 
