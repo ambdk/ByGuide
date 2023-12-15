@@ -3,11 +3,38 @@
 @{
 }
 
-
 <h1>Oplevelser</h1>
 
+<form method="post">
+    <div class="input-group mb-3">
+        <input autofocus asp-for="SearchString" class="form-control mr-1" placeholder="Indtast søgeord" />
+        <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-primary" />
+    </div>
+</form>
+
+<form method="post">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">min</span>
+        </div>
+        <input asp-for="MinPrice" class="form-control mr-1" style="max-width: 100px;" />
+        <div class="input-group-prepend">
+            <span class="input-group-text">Max</span>
+        </div>
+        <input asp-for="MaxPrice" class="form-control mr-1" style="max-width: 100px;" />
+        <div class="input-group-prepend">
+            <span class="input-group-text">Kategori</span>
+        </div>
+        <select asp-for="Category" asp-items="@(new SelectList(Categories.AllowedCategories))" class="form-control" style="max-width: 300px;">
+            <option value="">Vælg en kategori</option>
+        </select>
+        <input type="submit" asp-page-handler="Filter" value="Filter" class="btn btn-primary" />
+        <a href="./GetAllExperiences" class="btn btn-secondary">Nulstil</a>
+    </div>
+</form>
+
 <p>
-    <a class="btn btn-primary" asp-page="CreateExperience">Opret ny oplevese</a>
+    <a class="btn btn-primary" asp-page="CreateExperience">Opret ny oplevelse</a>
 </p>
 
 <div class="container">
