@@ -2,7 +2,6 @@
 // By: Jesper Højlund
 
 using ByGuide.Models;
-using ByGuide.Pages.Experience;
 
 namespace ByGuide.MockData
 {

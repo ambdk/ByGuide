@@ -11,8 +11,9 @@ namespace ByGuide.Service
         void AddPost(Post post);
         Post GetPost(int Id);
         List<Post> GetPosts();
-        IEnumerable<Post> TitleSearch(string title);
+        IEnumerable<Post> Search(string title);
         void UpdatePost(Post post);
+        IEnumerable<Post> Filter(string? category = null);
         Post DeletePost(int? id);
         #endregion
     }

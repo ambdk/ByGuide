@@ -28,8 +28,9 @@ namespace ByGuide.Pages.Post
         #endregion
 
         #region Methods
-        public IActionResult OnGet()
-        {
+        public IActionResult OnGet(int postId)
+        {   
+            PostId = postId;
             Post = _postService.GetPost(PostId);
 
             if (Post == null)

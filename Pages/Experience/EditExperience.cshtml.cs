@@ -68,6 +68,5 @@ namespace ByGuide.Pages.Experience
             return RedirectToPage("GetAllExperiences");
         }
         #endregion
-
     }
 }

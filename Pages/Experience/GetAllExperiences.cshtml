@@ -1,4 +1,7 @@
-﻿@page
+﻿
+@* By: Jesper Højlund *@
+
+@page
 @model ByGuide.Pages.Experience.GetAllExperiencesModel
 @{
 }
@@ -9,6 +12,7 @@
     <div class="input-group mb-3">
         <input autofocus asp-for="SearchString" class="form-control mr-1" placeholder="Indtast søgeord" />
         <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-primary" />
+        <a href="./GetAllExperiences" class="btn btn-secondary">Nulstil</a>
     </div>
 </form>
 
@@ -53,7 +57,7 @@
                 <div class="card-body">
                     @if (!string.IsNullOrEmpty(experience.ImageURL))
                     {
-                        <div style="height: 150px; overflow: hidden; width: 100%;">
+                        <div style="height: 300px; overflow: hidden; width: 100%;">
                             <img src="@experience.ImageURL" class="img-fluid" alt="Billede" style="height: 100%; width: 100%; object-fit: cover; object-position: center;">
                         </div>
                     }
