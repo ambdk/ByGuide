@@ -16,8 +16,8 @@ namespace ByGuide.Service
         public PostService(JsonFilePostService jsonFilePostService)
         {
             JsonFilePostService = jsonFilePostService;
-            _posts = JsonFilePostService.GetJsonPosts().ToList();
             //_posts = MockPosts.GetMockPosts();
+            _posts = JsonFilePostService.GetJsonPosts().ToList();
         }
         #endregion
 

@@ -1,6 +1,7 @@
 ﻿
+@* By: Jesper Højlund *@
 
-@page
+@page "/Posts/{ExperienceId:int}"
 @model ByGuide.Pages.Post.GetPostModel
 
 @*
@@ -11,10 +12,8 @@
 *@
 
 @{
-    ViewData["Title"] = "Post Details";
+    ViewData["Title"] = "Indlæg";
 }
-
-<h2>Post Details</h2>
 
 @if (Model.Post == null)
 {
