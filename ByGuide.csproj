@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Service\NewFolder\**" />
+    <Content Remove="Service\NewFolder\**" />
+    <EmbeddedResource Remove="Service\NewFolder\**" />
+    <None Remove="Service\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\Data\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
