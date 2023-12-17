@@ -35,7 +35,7 @@ namespace ByGuide.Pages.Post
 
             if (Post == null)
             {
-                return RedirectToPage("./NotFound");
+                return RedirectToPage("/NotFound");
             }
 
             return Page();
