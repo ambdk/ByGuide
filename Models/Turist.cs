@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TuristInfoV1.Models
+namespace ByGuide.Models
 {
 	public class Turist
 	{

@@ -1,12 +1,14 @@
 using ByGuide.Service;
-using TuristInfoV1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IPostService, PostService>();
+builder.Services.AddSingleton<IExperienceService, ExperienceService>();
 builder.Services.AddSingleton<ITuristService, TuristService>();
+builder.Services.AddTransient<JsonFilePostService>();
+builder.Services.AddTransient<JsonFileExperienceService>();
 builder.Services.AddSingleton<IEventService, EventService>();
 
 var app = builder.Build();
@@ -19,17 +21,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-bool isTrue = true;
-bool isFalse = false;
-
-if (isTrue)
-{
-	Console.WriteLine("HanidcapAccesible, true.");
-}
-else
-{
-	Console.WriteLine("HanidcapAccesible, false.");
-}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

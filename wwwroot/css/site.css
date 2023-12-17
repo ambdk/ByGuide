@@ -36,7 +36,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+margin-bottom: 60px;
 }
 
 
@@ -75,6 +75,7 @@ body {
 
 .footer {
     background-color: #2F799E;
+    height: 50px;
 }
 
 /* Index start */

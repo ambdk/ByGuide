@@ -1,8 +1,9 @@
-﻿using TuristInfoV1.Models;
-using TuristInfoV1.MockData;
+﻿
+using ByGuide.Models;
+using ByGuide.MockData;
 
 
-namespace TuristInfoV1.Services
+namespace ByGuide.Service
 {
 	public class TuristService : ITuristService
 	{

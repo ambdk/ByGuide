@@ -1,4 +1,7 @@
-﻿using ByGuide.Models;
+﻿
+// By: Jesper Højlund
+
+using ByGuide.Models;
 
 namespace ByGuide.MockData
 {

@@ -1,31 +1,36 @@
 
 // By: Jesper Højlund
 
-using ByGuide.Models;
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ByGuide.Pages.Post
+namespace ByGuide.Pages.Experience
 {
-    public class GetAllPostsModel : PageModel
+    public class GetAllExperiencesModel : PageModel
     {
         #region Instance Fields
-        private IPostService _postService;
+        private IExperienceService _experienceService;
         #endregion
 
         #region Constructor
-        public GetAllPostsModel(IPostService postService)
+        public GetAllExperiencesModel(IExperienceService experienceService)
         {
-            _postService = postService;
+            _experienceService = experienceService;
         }
         #endregion
 
         #region Properties
-        public List<Models.Post>? Posts { get; private set; }
-        
+        public List<Models.Experience>? Experiences { get; private set; }
+
         [BindProperty]
         public string SearchString { get; set; }
+
+        [BindProperty]
+        public int MinPrice { get; set; }
+
+        [BindProperty]
+        public int MaxPrice { get; set; }
 
         [BindProperty]
         public string Category { get; set; }
@@ -34,18 +39,18 @@ namespace ByGuide.Pages.Post
         #region Methods
         public void OnGet()
         {
-            Posts = _postService.GetPosts();
+            Experiences = _experienceService.GetExperiences();
         }
 
         public IActionResult OnPostSearch()
         {
-            Posts = _postService.Search(SearchString).ToList();
+            Experiences = _experienceService.Search(SearchString).ToList();
             return Page();
         }
 
         public IActionResult OnPostFilter()
         {
-            Posts = _postService.Filter(Category).ToList();
+            Experiences = _experienceService.Filter(MaxPrice, MinPrice, Category).ToList();
             return Page();
         }
         #endregion

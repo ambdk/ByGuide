@@ -1,4 +1,6 @@
-﻿using ByGuide.MockData;
+﻿
+// By: Jesper Højlund
+
 using ByGuide.Models;
 
 namespace ByGuide.Service
@@ -10,19 +12,75 @@ namespace ByGuide.Service
         #endregion
 
         #region Constructor
-        public PostService()
+        public PostService(JsonFilePostService jsonFilePostService)
         {
-            _posts = MockPosts.GetMockPosts();
+            JsonFilePostService = jsonFilePostService;
+            _posts = JsonFilePostService.GetJsonPosts().ToList();
         }
         #endregion
 
+        #region Properties
+        private JsonFilePostService JsonFilePostService { get; set; }
+        #endregion
+
         #region Methods
-        
         public void AddPost(Post post)
         {
+            post.Id = GenerateUniqueId();
             _posts.Add(post);
+            JsonFilePostService.SaveJsonPosts(_posts);
         }
-        
+
+        public Post GetPost(int id)
+        {
+            foreach (Post post in _posts)
+            {
+                if (post.Id == id)
+                {
+                    return post;
+                }
+            }
+
+            return null;
+        }
+
+        public List<Post> GetPosts()
+        {
+            return _posts;
+        }
+
+        public IEnumerable<Post> Search(string str)
+        {
+            List<Post> titleSearch = new List<Post>();
+            foreach (Post post in _posts)
+            {
+                if (string.IsNullOrEmpty(str) ||
+                    post.Title.ToLower().Contains(str.ToLower()) ||
+                    post.Description.ToLower().Contains(str.ToLower()))
+                {
+                    titleSearch.Add(post);
+                }
+            }
+
+            return titleSearch;
+        }
+
+        public IEnumerable<Post> Filter(string? category = null)
+        {
+            List<Post> filterList = new List<Post>();
+            foreach (Post post in _posts)
+            {
+                if (string.IsNullOrEmpty(category) || post.Category == category)
+                {
+                    filterList.Add(post);
+                }
+            }
+
+            return filterList;
+        }
+
+
+
         public void UpdatePost(Post post)
         {
             if (post != null)
@@ -38,55 +96,45 @@ namespace ByGuide.Service
                         p.ImageURL = post.ImageURL;
                     }
                 }
+
+                JsonFilePostService.SaveJsonPosts(_posts);
             }
         }
         
         public Post DeletePost(int? id)
         {
+            Post? postToBeDeleted = null;
             foreach (Post post in _posts)
             {
                 if (post.Id == id)
                 {
-                    _posts.Remove(post);
-                    return post;
+                    postToBeDeleted = post;
+                    break;
                 }
             }
 
-            return null;
-        }
-        
-        public Post GetPost(int id)
-        {
-            foreach (Post post in _posts)
+            if (postToBeDeleted != null)
             {
-                if (post.Id != id)
-                {
-                    return post;
-                }
+                _posts.Remove(postToBeDeleted);
+                JsonFilePostService.SaveJsonPosts(_posts);
             }
 
-            return null;
-        } 
-        
-        public List<Post> GetPosts()
-        {
-            return _posts;
+            return postToBeDeleted;
         }
-        
-        public IEnumerable<Post> TitleSearch(string str)
+        #endregion
+
+        #region Helper Methods
+        private int GenerateUniqueId()
         {
-            List<Post> titleSearch = new List<Post>();
-            foreach (Post post in _posts)
+            int maxId = 0;
+            foreach (Post existingPost in _posts)
             {
-                if (string.IsNullOrEmpty(str) ||
-                    post.Title.ToLower().Contains(str.ToLower()) ||
-                    post.Description.ToLower().Contains(str.ToLower()))
+                if (existingPost.Id.HasValue && existingPost.Id.Value > maxId)
                 {
-                    titleSearch.Add(post);
+                    maxId = existingPost.Id.Value;
                 }
             }
-
-            return titleSearch;
+            return maxId + 1;
         }
         #endregion
     }

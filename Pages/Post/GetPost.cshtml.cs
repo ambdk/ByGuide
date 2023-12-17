@@ -1,46 +1,44 @@
 
 // By: Jesper Højlund
 
-
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ByGuide.Pages.Post
 {
-    public class CreatePostModel : PageModel
+    public class GetPostModel : PageModel
     {
         #region Instance Fields
         private IPostService _postService;
         #endregion
 
         #region Constructor
-        public CreatePostModel(IPostService postService)
+        public GetPostModel(IPostService postService)
         {
             _postService = postService;
         }
         #endregion
 
         #region Properties
-        [BindProperty]
-        public Models.Post Post { get; set; }
+        public Models.Post? Post { get; private set; }
+
+        [BindProperty(SupportsGet = true)]
+        public int PostId { get; set; }
         #endregion
 
         #region Methods
-        public IActionResult OnGet()
-        {
-            return Page();
-        }
+        public IActionResult OnGet(int postId)
+        {   
+            PostId = postId;
+            Post = _postService.GetPost(PostId);
 
-        public IActionResult OnPost()
-        {
-            if (!ModelState.IsValid)
+            if (Post == null)
             {
-                return Page();
+                return RedirectToPage("./NotFound");
             }
 
-            _postService.AddPost(Post);
-            return RedirectToPage("GetAllPosts");
+            return Page();
         }
         #endregion
     }

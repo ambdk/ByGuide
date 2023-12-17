@@ -1,16 +1,14 @@
-﻿@page
+﻿
+@* By: Jesper HØjlund *@
+
+@page
 @model ByGuide.Pages.Post.CreatePostModel
 @{
 }
 
-<h1>Opret nyt indlæg</h1>
+<h1>Opret nyt opslag</h1>
 
 <form method="post">
-    <div class="form-group">
-        <label asp-for="Post.Id" class="control-label"></label>
-        <input asp-for="Post.Id" class="form-control" />
-        <span asp-validation-for="Post.Id" class="text-danger"></span>
-    </div>
     <div class="form-group">
         <label asp-for="Post.Title" class="control-label"></label>
         <input asp-for="Post.Title" class="form-control" />
@@ -18,12 +16,14 @@
     </div>
     <div class="form-group">
         <label asp-for="Post.Description" class="control-label"></label>
-        <input asp-for="Post.Description" class="form-control" />
+        <textarea asp-for="Post.Description" class="form-control" style="height: 150px;"></textarea>
         <span asp-validation-for="Post.Description" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Post.Category" class="control-label"></label>
-        <input asp-for="Post.Category" class="form-control" />
+        <select asp-for="Post.Category" asp-items="@(new SelectList(Categories.AllowedCategories))">
+            <option value="">Vælg en kategori</option>
+        </select>
         <span asp-validation-for="Post.Category" class="text-danger"></span>
     </div>
     <div class="form-group">

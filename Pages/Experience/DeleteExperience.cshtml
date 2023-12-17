@@ -2,16 +2,16 @@
 @* By: Jesper Højlund *@
 
 @page "{id:int}"
-@model ByGuide.Pages.Post.DeletePostModel
+@model ByGuide.Pages.Experience.DeleteExperienceModel
 @{
 }
 
 <h1>Bekræft sletning</h1>
 
 <div class="alert alert-danger">
-    <h5>Er du sikker på at du vil slette indlægget - @Model.Post.Title</h5>
+    <h5>Er du sikker på at du vil slette Oplevelsen - @Model.Experience.Title</h5>
     <form method="post">
         <button type="submit" class="btn btn-danger">Ja</button>
-        <a class="btn btn-primary" asp-page="/Post/GetAllPosts">Nej</a>
+        <a class="btn btn-primary" asp-page="/Experience/GetAllExperiences">Nej</a>
     </form>
 </div>
