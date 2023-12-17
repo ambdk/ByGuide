@@ -19,10 +19,10 @@ namespace ByGuide.Pages.Experience
             _experienceService = experienceService;
         }
         #endregion
+
+        #region Properties
         [BindProperty]
         public Models.Experience Experience { get; set; }
-        #region Properties
-
         #endregion
 
         #region Methods
@@ -62,6 +62,5 @@ namespace ByGuide.Pages.Experience
             return RedirectToPage("GetAllExperiences");
         }
         #endregion
-
     }
 }

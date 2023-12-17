@@ -7,13 +7,11 @@ namespace ByGuide.Models
 {
 	public class Post
 	{
-		#region Default Constructor
+		#region Constructors
 		public Post()
 		{
 		}
-		#endregion
 
-		#region Constructor
 		public Post(int id, string title, string description, string category, string address, string? imageURL = null)
 		{
             Id = id;

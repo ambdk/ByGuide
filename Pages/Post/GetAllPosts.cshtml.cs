@@ -1,6 +1,7 @@
 
 // By: Jesper Højlund
 
+using ByGuide.Models;
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -25,6 +26,9 @@ namespace ByGuide.Pages.Post
         
         [BindProperty]
         public string SearchString { get; set; }
+
+        [BindProperty]
+        public string Category { get; set; }
         #endregion
 
         #region Methods
@@ -33,9 +37,15 @@ namespace ByGuide.Pages.Post
             Posts = _postService.GetPosts();
         }
 
-        public IActionResult OnPostTitleSearch()
+        public IActionResult OnPostSearch()
         {
-            Posts = _postService.TitleSearch(SearchString).ToList();
+            Posts = _postService.Search(SearchString).ToList();
+            return Page();
+        }
+
+        public IActionResult OnPostFilter()
+        {
+            Posts = _postService.Filter(Category).ToList();
             return Page();
         }
         #endregion

@@ -1,7 +1,6 @@
 ﻿
 // By: Jesper Højlund
 
-using ByGuide.MockData;
 using ByGuide.Models;
 
 namespace ByGuide.Service
@@ -17,7 +16,6 @@ namespace ByGuide.Service
         {
             JsonFilePostService = jsonFilePostService;
             _posts = JsonFilePostService.GetJsonPosts().ToList();
-            //_posts = MockPosts.GetMockPosts();
         }
         #endregion
 
@@ -51,7 +49,7 @@ namespace ByGuide.Service
             return _posts;
         }
 
-        public IEnumerable<Post> TitleSearch(string str)
+        public IEnumerable<Post> Search(string str)
         {
             List<Post> titleSearch = new List<Post>();
             foreach (Post post in _posts)
@@ -66,6 +64,22 @@ namespace ByGuide.Service
 
             return titleSearch;
         }
+
+        public IEnumerable<Post> Filter(string? category = null)
+        {
+            List<Post> filterList = new List<Post>();
+            foreach (Post post in _posts)
+            {
+                if (string.IsNullOrEmpty(category) || post.Category == category)
+                {
+                    filterList.Add(post);
+                }
+            }
+
+            return filterList;
+        }
+
+
 
         public void UpdatePost(Post post)
         {

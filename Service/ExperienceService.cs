@@ -1,7 +1,6 @@
 ﻿
 // By: Jesper Højlund
 
-using ByGuide.MockData;
 using ByGuide.Models;
 
 namespace ByGuide.Service
@@ -16,7 +15,6 @@ namespace ByGuide.Service
         public ExperienceService(JsonFileExperienceService jsonFileExperienceService)
         {
             JsonFileExperienceService = jsonFileExperienceService;
-            //_experiences = MockExperiences.GetMockExperiences();
             _experiences = JsonFileExperienceService.GetJsonExperiences().ToList();
         }
         #endregion
