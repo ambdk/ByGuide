@@ -1,5 +1,4 @@
-﻿
-using TuristInfoV1.Models;
+﻿using TuristInfoV1.Models;
 using TuristInfoV1.MockData;
 
 

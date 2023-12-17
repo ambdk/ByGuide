@@ -30,7 +30,7 @@ namespace TuristInfoV1.Pages.Tursit
 			Turists = _turistService.GetTurists();
 		}
 
-		public IActionResult OnPostTitleSearch()
+		public IActionResult OnTuristSearch()
 		{
 			Turists = _turistService.TuristSearch(SearchString).ToList();
 			return Page();

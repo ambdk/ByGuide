@@ -18,7 +18,7 @@ namespace TuristInfoV1.Models
 		}
 		[Display(Name = "Turist ID")]
 		[Required(ErrorMessage = "IT should gives ID to Turist")]
-		[Range(typeof(int), "0", "10000", ErrorMessage = "ID Number should be between (1) og (2)")]
+		[Range(typeof(int), "0", "10000", ErrorMessage = "ID Number should be between (1) and (2)")]
 		public int? Id { get; set; }
 
 		[Display(Name = "Turist Name")]

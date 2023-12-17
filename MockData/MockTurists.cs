@@ -25,5 +25,5 @@ namespace TuristInfoV1.MockData
 				return _turists;
 			}
 			#endregion
-		}
 	}
+}
