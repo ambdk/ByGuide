@@ -2,7 +2,6 @@ using ByGuide.Models;
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using TuristInfoV1.Services;
 
 namespace ByGuide.Pages.Event
 {

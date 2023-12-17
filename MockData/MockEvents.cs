@@ -1,5 +1,4 @@
 ﻿using ByGuide.Models;
-using TuristInfoV1.Models;
 
 namespace ByGuide.MockData
 {
