@@ -1,6 +1,7 @@
 
 // By: Jesper Højlund
 
+using ByGuide.Helpers;
 using ByGuide.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
