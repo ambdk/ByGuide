@@ -35,7 +35,7 @@ namespace ByGuide.Pages.Experience
 
             if (Experience == null)
             {
-                return RedirectToPage("./NotFound");
+                return RedirectToPage("/NotFound");
             }
 
             return Page();
