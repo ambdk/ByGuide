@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,15 +11,16 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ByGuide.styles.css" asp-append-version="true" />
 </head>
-<body>
+
+<body class="d-flex flex-column p-0 m-0 vh-100">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">
                     <img src="~/images/logo.png" width="130" />
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
@@ -39,24 +41,40 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Events">Events</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Admin
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Admin
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/Opslag/234234">Eksempel på "Side Ikke Fundet"</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/GetAllPosts">Se alle opslag</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/CreatePost">Opret opslag</a></li>
+                                <li><a class="dropdown-item" href="/Opslag/234234">Eksempel på "Side Ikke Fundet"</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/GetAllPosts">Se alle opslag</a>
+                                </li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/CreatePost">Opret opslag</a>
+                                </li>
                                 <li><a class="dropdown-item" href="/Opslag/4">Eksempel på opslag</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Experience/GetAllExperiences">Se alle oplevelser</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Experience/CreateExperience">Opret oplevelse</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Experience/GetAllExperiences">Se
+                                        alle oplevelser</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Experience/CreateExperience">Opret
+                                        oplevelse</a></li>
                                 <li><a class="dropdown-item" href="/Oplevelser/4">Eksempel på oplevelse</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/GetAllTurists">Get all turists</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/CreateTurist">Create turist</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/EditTurist">Edit turist</a></li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/DeleteTurist">Delete turist</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/GetAllTurists">Get all
+                                        turists</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/CreateTurist">Create
+                                        turist</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/EditTurist">Edit turist</a>
+                                </li>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Turist/DeleteTurist">Delete
+                                        turist</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -64,13 +82,14 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+
+    <div class="container flex-grow-1">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="footer">
+    <footer class="footer d-flex align-items-center">
         <div class="container text-light text-center">
             &copy; 2023 - Roskilde ByGuide
         </div>
@@ -84,4 +103,5 @@
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
