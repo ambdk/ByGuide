@@ -1,6 +1,7 @@
 ﻿
 // By: Jesper Højlund
 
+using ByGuide.Helpers;
 using ByGuide.Models;
 
 namespace ByGuide.Service
@@ -26,10 +27,9 @@ namespace ByGuide.Service
         #region Methods
         public void AddExperience(Experience experience)
         {
-            experience.Id = GenerateUniqueId();
+            experience.Id = UniqueIdGenerator.Next(_experiences);
             _experiences.Add(experience);
             JsonFileExperienceService.SaveJsonExperiences(_experiences);
-
         }
 
         public Experience GetExperience(int id)
@@ -130,21 +130,6 @@ namespace ByGuide.Service
             }
 
             return experienceToBeDeleted;
-        }
-        #endregion
-
-        #region Helper Methods
-        private int GenerateUniqueId()
-        {
-            int maxId = 0;
-            foreach (Experience existingExperience in _experiences)
-            {
-                if (existingExperience.Id.HasValue && existingExperience.Id.Value > maxId)
-                {
-                    maxId = existingExperience.Id.Value;
-                }
-            }
-            return maxId + 1;
         }
         #endregion
     }

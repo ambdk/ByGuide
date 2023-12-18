@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ByGuide.Models
 {
-    public class Experience
+    public class Experience : IContent
     {
         #region Constructors
         public Experience()

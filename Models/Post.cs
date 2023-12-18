@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ByGuide.Models
 {
-	public class Post
+	public class Post : IContent
 	{
 		#region Constructors
 		public Post()

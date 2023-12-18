@@ -5,21 +5,25 @@
 /// Helper class to convert the openingshours from the razor view, into a dict so it follows the model class.
 /// </summary>
 
-public static class OpeningHoursHelper
-{
-    #region Methods
-    public static Dictionary<string, string> ParseFromForm(IFormCollection form)
+
+namespace ByGuide.Helpers
+{ 
+    public static class OpeningHoursHelper
     {
-        var openingHours = new Dictionary<string, string>();
-        foreach (var day in new[] { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag" })
+        #region Methods
+        public static Dictionary<string, string> ParseFromForm(IFormCollection form)
         {
-            string? hours = form["OpeningHours[" + day + "]"];
-            if (!string.IsNullOrEmpty(hours))
+            var openingHours = new Dictionary<string, string>();
+            foreach (var day in new[] { "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag", "Søndag" })
             {
-                openingHours.Add(day, hours);
+                string? hours = form["OpeningHours[" + day + "]"];
+                if (!string.IsNullOrEmpty(hours))
+                {
+                    openingHours.Add(day, hours);
+                }
             }
+            return openingHours;
         }
-        return openingHours;
+        #endregion
     }
-    #endregion
 }
