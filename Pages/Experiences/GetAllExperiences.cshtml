@@ -1,0 +1,90 @@
+﻿@page "/Oplevelser"
+@model ByGuide.Pages.Experiences.GetAllExperiencesModel
+@{
+}
+
+<h1>Oplevelser</h1>
+
+<form method="post">
+    <div class="input-group mb-3">
+        <input autofocus asp-for="SearchString" class="form-control mr-1" placeholder="Indtast søgeord" />
+        <input type="submit" asp-page-handler="Search" value="Søg" class="btn btn-primary" />
+        <a href="./GetAllExperiences" class="btn btn-secondary">Nulstil</a>
+    </div>
+</form>
+
+<form method="post">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">min</span>
+        </div>
+        <input asp-for="MinPrice" class="form-control mr-1" style="max-width: 100px;" />
+        <div class="input-group-prepend">
+            <span class="input-group-text">Max</span>
+        </div>
+        <input asp-for="MaxPrice" class="form-control mr-1" style="max-width: 100px;" />
+        <div class="input-group-prepend">
+            <span class="input-group-text">Kategori</span>
+        </div>
+        <select asp-for="Category" asp-items="@(new SelectList(Categories.AllowedCategories))" class="form-control" style="max-width: 300px;">
+            <option value="">Vælg en kategori</option>
+        </select>
+        <input type="submit" asp-page-handler="Filter" value="Filter" class="btn btn-primary" />
+        <a href="./GetAllExperiences" class="btn btn-secondary">Nulstil</a>
+    </div>
+</form>
+
+<p>
+    <a class="btn btn-primary" asp-page="CreateExperience">Opret ny oplevelse</a>
+</p>
+
+<div class="container">
+    @if (Model.Experiences != null)
+    {
+        foreach (var experience in Model.Experiences)
+        {
+            <div class="card my-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title mb-0">#@experience.Id - @experience.Title</h3>
+                    <div>
+                        <a class="btn btn-primary btn-sm" type="button" title="Rediger" asp-page="EditExperience" asp-route-id="@experience.Id">Rediger</a>
+                        <a class="btn btn-danger btn-sm" type="button" title="Slet" asp-page="DeleteExperience" asp-route-id="@experience.Id">Slet</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(experience.ImageURL))
+                    {
+                        <div style="height: 300px; overflow: hidden; width: 100%;">
+                            <img src="@experience.ImageURL" class="img-fluid" alt="Billede" style="height: 100%; width: 100%; object-fit: cover; object-position: center;">
+                        </div>
+                    }
+                    <p><h5 class="card-title">Kategori: @experience.Category</h5></p>
+                    <h5 class="card-title">Pris: @experience.AdmissionPrice kr.</h5>
+                    <p class="card-text">@experience.Description</p>
+                    <p class="card-text"><strong>Adresse:</strong><br />@experience.Address</p>
+                    <p class="card-text"><strong>Åbningstider:</strong><br>
+                    @if (experience.OpeningHours != null && experience.OpeningHours.Any())
+                    {
+                        foreach (var day in experience.OpeningHours)
+                        {
+                            <span>@day.Key: @day.Value</span><br>
+                        }
+                    }
+                    else
+                    {
+                        <span class="text-muted">Ingen åbningstider angivet</span>
+                    }
+                    </p>
+                    <p class="card-text">
+                        Handicapvenlig: @(experience.HandicapAccesible ? "Ja" : "Nej")
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="@experience.ExternalLink" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Læs mere</a>
+                </div>
+
+            </div>
+        }
+    }
+</div>
+

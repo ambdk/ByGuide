@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="~/ByGuide.styles.css" asp-append-version="true" />
 </head>
 
-<body class="d-flex flex-column p-0 m-0 vh-100">
+<body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-3">
             <div class="container">
@@ -29,16 +29,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Hjem</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/History">Historie</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/History/GetAllHistoryItems">Historie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Activities">Aktiviteter</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Activities/GetAllActivities">Aktiviteter</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Experiences">Oplevelser</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Experiences/GetAllExperiences">Oplevelser</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Events">Events</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Events/GetAllEvents">Events</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -51,11 +51,11 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/GetAllPosts">Se alle opslag</a>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Posts/GetAllPosts">Se alle opslag</a>
                                 </li>
-                                <li><a class="dropdown-item" asp-area="" asp-page="/Post/CreatePost">Opret opslag</a>
+                                <li><a class="dropdown-item" asp-area="" asp-page="/Posts/CreatePost">Opret opslag</a>
                                 </li>
-                                <li><a class="dropdown-item" href="/Opslag/4">Eksempel på opslag</a></li>
+                                <li><a class="dropdown-item" asp-page="/Posts/GetPost" asp-route-id="4">Eksempel på opslag</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -89,7 +89,7 @@
         </main>
     </div>
 
-    <footer class="footer d-flex align-items-center">
+    <footer class="footer">
         <div class="container text-light text-center">
             &copy; 2023 - Roskilde ByGuide
         </div>
