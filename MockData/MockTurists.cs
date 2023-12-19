@@ -8,15 +8,7 @@ namespace ByGuide.MockData
 	{
 		#region Static Fields
 		private static List<Turist> _turists = new List<Turist>();
-			//{
-			///new Turist (1,
-			/// <summary>
-			/// new Turist (2
-			/// </summary>new Turist,
-				///Per
-		///	new turist(3,
-			///	Christian
-		    ///};
+	
 			#endregion
 
 			#region Methods
