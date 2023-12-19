@@ -1,4 +1,5 @@
 using ByGuide.Service;
+using ByGuide.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddSingleton<ITuristService, TuristService>();
 builder.Services.AddTransient<JsonFilePostService>();
 builder.Services.AddTransient<JsonFileExperienceService>();
 builder.Services.AddSingleton<IEventService, EventService>();
+builder.Services.AddTransient<JsonFileEventService>();
 
 var app = builder.Build();
 

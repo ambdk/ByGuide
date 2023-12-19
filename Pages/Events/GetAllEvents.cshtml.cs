@@ -23,10 +23,20 @@ namespace ByGuide.Pages.Events
 
 		[BindProperty]
 		public string SearchString { get; set; }
-		#endregion
 
-		#region Methods
-		public void OnGet()
+        [BindProperty]
+        public int MinPrice { get; set; }
+
+        [BindProperty]
+        public int MaxPrice { get; set; }
+
+        [BindProperty]
+        public string Category { get; set; }
+        #endregion
+
+
+        #region Methods
+        public void OnGet()
 		{
 			Events = _eventService.GetEvents();
 		}

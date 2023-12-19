@@ -8,12 +8,18 @@ namespace ByGuide.Models
 		public Event()
 		{
 		}
+        // Constructor
+        public Event(string name, decimal price, List<DateTime> datetimeList, Uri externalLink, bool handicapAccessible)
+        {
+            Name = name;
+            Price = price;
+            DatetimeList = datetimeList;
+            ExternalLink = externalLink;
+            HandicapAccessible = handicapAccessible;
 
-		public Event(string name, int price, int datetime, Uri externalLink, bool handicapAccessible)
-		{
-		}
+        }
 
-		[Display(Name = "Pris for begivenheden")]
+        [Display(Name = "Pris for begivenheden")]
 		[Required(ErrorMessage = "Begivenheden skal have en pris")]
 		[Range(typeof(decimal), "0.01", "1000000", ErrorMessage = "Prisen skal være mellem (0.01) og (1000000)")]
 		public decimal Price { get; set; }
@@ -33,15 +39,5 @@ namespace ByGuide.Models
 
 		public string Name { get; internal set; }
 
-		// Constructor with the new properties
-		public Event(string name, decimal price, List<DateTime> datetimeList, Uri externalLink, bool handicapAccessible)
-		{
-			Price = price;
-			DatetimeList = datetimeList;
-			ExternalLink = externalLink;
-			HandicapAccessible = handicapAccessible;
-			Name = name;
-		}
 	}
-
 }

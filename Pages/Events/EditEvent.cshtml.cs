@@ -26,7 +26,7 @@ namespace ByGuide.Pages.Events
 		#region Methods
 		public IActionResult OnGet(string name)
 		{
-			Event = _eventService.GetEvent(name);
+			Event = _eventService.GetEvents(name);
 			if (Event == null)
 			{
 				return RedirectToPage("/NotFound");
@@ -42,7 +42,7 @@ namespace ByGuide.Pages.Events
 				return Page();
 			}
 
-			_eventService.UpdateEvent(Event);
+			_eventService.UpdateEvents(Event);
 			return RedirectToPage("GetAllEvents");
 		}
 		#endregion
