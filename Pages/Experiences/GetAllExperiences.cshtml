@@ -17,9 +17,9 @@
 
             <form method="post">
                 <div class="input-group">
-                    <span class="input-group-text">min</span>
+                    <span class="input-group-text">Pris Min</span>
                     <input asp-for="MinPrice" class="form-control mr-1" style="max-width: 100px;" />
-                    <span class="input-group-text">Max</span>
+                    <span class="input-group-text">Pris Max</span>
                     <input asp-for="MaxPrice" class="form-control mr-1" style="max-width: 100px;" />
                     <span class="input-group-text">Kategori</span>
                     <select asp-for="Category" asp-items="@(new SelectList(Categories.AllowedCategories))" class="form-control" style="max-width: 300px;">

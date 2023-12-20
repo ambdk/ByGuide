@@ -1,9 +1,14 @@
 ﻿@page "/Events"
 @model ByGuide.Pages.Events.GetAllEventsModel
 @{
+    ViewData["Title"] = "Events";
 }
-<h1>Begivenheder</h1>
 
+
+<div id="page-e">
+    <div class="row g-3">
+<h1>Begivenheder</h1>
+<div class="">
 <form method="post">
     <div class="input-group mb-3">
         <input autofocus asp-for="SearchString" class="form-control mr-1" placeholder="Indtast søgeord" />
@@ -13,18 +18,12 @@
 </form>
 
 <form method="post">
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text">min</span>
-        </div>
+    <div class="input-group">
+            <span class="input-group-text">Pris Min</span>
         <input asp-for="MinPrice" class="form-control mr-1" style="max-width: 100px;" />
-        <div class="input-group-prepend">
-            <span class="input-group-text">Max</span>
-        </div>
+            <span class="input-group-text">Pris Max</span>
         <input asp-for="MaxPrice" class="form-control mr-1" style="max-width: 100px;" />
-        <div class="input-group-prepend">
             <span class="input-group-text">Kategori</span>
-        </div>
         <select asp-for="Category" asp-items="@(new SelectList(Categories.AllowedCategories))" class="form-control" style="max-width: 300px;">
             <option value="">Vælg en kategori</option>
         </select>
@@ -32,35 +31,22 @@
         <a href="./GetAllEvents" class="btn btn-secondary">Nulstil</a>
     </div>
 </form>
+</div>
 
-<p>
-    <a class="btn btn-primary" asp-page="CreateEvent">Oprette en begivenhed</a>
-</p>
-
-
-
-<div class="container">
     @if (Model.Events != null)
     {
-        foreach (var events in Model.Events)
+        foreach (var e in Model.Events)
         {
-            <div class="card my-3">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="card-title mb-0">Event @events.Name </h3>
-                    <div>
-                        <a class="btn btn-primary btn-sm" type="button" title="Rediger" asp-page="EditEvent" asp-route-id="@events.Name">Rediger</a>
-                        <a class="btn btn-danger btn-sm" type="button" title="Slet" asp-page="DeleteEvents" asp-route-id="@events.Name">Slet</a>
-                    </div>
-                </div>
+            <div class="card">
                 <div class="card-body">                   
-                    <p><h5 class="card-title">Name : @events.Name</h5></p>
-                    <h5 class="card-title">Date : @events.DatetimeList </h5>
-                    <p class="card-text">Price : @events.Price Kr</p>
-                    <p class="card-text"><strong>ExternalLink:</strong><br />@events.ExternalLink</p>
+                    <p><h5 class="card-title">Name : @e.Name</h5></p>
+                    <h5 class="card-title">Date : @e.DatetimeList </h5>
+                    <p class="card-text">Price : @e.Price Kr</p>
+                    <p class="card-text"><strong>ExternalLink:</strong><br />@e.ExternalLink</p>
                     <p class="card-text">                    
                     </p>
                     <p class="card-text">
-                        Handicapvenlig: @(events.HandicapAccessible ? "Ja" : "Nej")
+                        Handicapvenlig: @(e.HandicapAccessible ? "Ja" : "Nej")
                     </p>
                 </div>
 
@@ -68,4 +54,5 @@
             </div>
         }
     }
+    </div>
 </div>

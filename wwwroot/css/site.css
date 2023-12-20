@@ -76,6 +76,19 @@ body {
     background-color: #2F799E;
 }
 
+.footer a.btn {
+    font-weight: bold;
+    color: #F5F5F5; 
+    background-color: #25668e; 
+    border-color: #25668e;
+    transition: all .3s ease-in-out;
+}
+
+.footer a.btn:hover {
+    background-color: #145074;
+    border-color: #145074;
+}
+
 .content-card {
     transition: box-shadow .3s ease-in-out;
 }
