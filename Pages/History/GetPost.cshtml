@@ -1,4 +1,4 @@
-﻿@page "/Historie/{PostId:int}"
+﻿@page "/Historie/{id:int}"
 @model ByGuide.Pages.History.GetPostModel
 
 @*
@@ -10,7 +10,7 @@
 *@
 
 @{
-    ViewData["Title"] = "Opslag";
+    ViewData["Title"] = Model.Post.Title;
 }
 
 @if (Model.Post == null)

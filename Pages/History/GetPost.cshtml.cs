@@ -28,9 +28,9 @@ namespace ByGuide.Pages.History
         #endregion
 
         #region Methods
-        public IActionResult OnGet(int postId)
+        public IActionResult OnGet(int id)
         {
-            PostId = postId;
+            PostId = id;
             Post = _postService.GetPost(PostId);
 
             if (Post == null)

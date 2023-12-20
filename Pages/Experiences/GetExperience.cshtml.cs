@@ -28,9 +28,9 @@ namespace ByGuide.Pages.Experiences
         #endregion
 
         #region Methods
-        public IActionResult OnGet(int experienceId)
+        public IActionResult OnGet(int id)
         {
-            ExperienceId = experienceId;
+            ExperienceId = id;
             Experience = _experienceService.GetExperience(ExperienceId);
 
             if (Experience == null)

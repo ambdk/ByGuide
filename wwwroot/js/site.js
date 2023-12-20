@@ -4,8 +4,14 @@
 // Write your JavaScript code.
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    const re = /^([\/].*)\//
+
     document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.getAttribute('href').toLowerCase() === location.pathname.toLowerCase()) {
+
+        const subPageRe = re.exec(location.pathname.toLowerCase());
+
+        if ((link.getAttribute('href').toLowerCase() === location.pathname.toLowerCase()) || (subPageRe !== null && link.getAttribute('href').toLowerCase() === subPageRe[1])) {
             link.classList.add('active-link');
         } else {
             link.classList.remove('active-link');

@@ -84,8 +84,21 @@ body {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
 }
 
-/* Index start */
+.form-control:focus {
+    border-color: #25668e;
+    box-shadow: 0 0 0 0.2rem #25668e43;
+}
 
+input[type="submit"] {
+    color: #F9F9F9;
+    background-color: #25668e;
+}
+
+input[type="submit"]:hover {
+    background-color: #145074;
+}
+
+/* Index start */
 #page-index > .carousel, #page-index > .carousel .carousel-inner {
     max-height: 500px;
     border-radius: 5px;
@@ -143,7 +156,7 @@ body {
 }
 
 #page-index > #experiences > div:last-child > div > a.btn:hover {
-    background-color: #25668e!important;
+    background-color: #145074!important;
 }
 
 /* Index end */
