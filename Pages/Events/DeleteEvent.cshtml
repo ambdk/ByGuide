@@ -8,36 +8,29 @@
 
 <form method="post">
     <div class="form-group">
-        <label asp-for="Event.Name" class="control-label"></label>
-        <input asp-for="Event.Name" class="form-control" />
-        <span asp-validation-for="Event.Name" class="text-danger"></span>
+        <label asp-for="Event.Name" class="control-label">Begivenhedsnavn:</label>
+        <span class="form-control">@Model.Event.Name</span>
     </div>
     <div class="form-group">
-        <label asp-for="Event.Price" class="control-label"></label>
-        <textarea asp-for="Event.Price" class="form-control" style="height: 150px;"></textarea>
-        <span asp-validation-for="Event.Price" class="text-danger"></span>
+        <label asp-for="Event.Price" class="control-label">Pris:</label>
+        <span class="form-control">@Model.Event.Price</span>
     </div>
     <div class="form-group">
-        <label asp-for="Event.DatetimeList" class="control-label"></label>
-        <select asp-for="Event.DatetimeList" asp-items="@(new SelectList(Categories.AllowedCategories))">
-            <option value="">Vælg Dato</option>
-        </select>
-        <span asp-validation-for="Event.DatetimeList" class="text-danger"></span>
+        <label asp-for="Event.DatetimeList" class="control-label">Dato:</label>
+        <span class="form-control">@Model.Event.DatetimeList</span>
     </div>
     <div class="form-group">
-        <label asp-for="Event.ExternalLink" class="control-label"></label>
-        <input asp-for="Event.ExternalLink" class="form-control" />
-        <span asp-validation-for="Event.ExternalLink" class="text-danger"></span>
+        <label asp-for="Event.ExternalLink" class="control-label">Ekstern Link:</label>
+        <span class="form-control">@Model.Event.ExternalLink</span>
     </div>
     <div class="form-group">
-        <label asp-for="Event.HandicapAccessible" class="control-label"></label>
-        <input asp-for="Event.HandicapAccessible" class="form-control" />
-        <span asp-validation-for="Event.HandicapAccessible" class="text-danger"></span>
+        <label asp-for="Event.HandicapAccessible" class="control-label">Handicap Adgang:</label>
+        <span class="form-control">@Model.Event.HandicapAccessible</span>
     </div>
 
     <p>
         <div class="form-group">
-            <input type="submit" value="Opret" class="btn btn-primary" />
+            <input type="submit" value="Bekræft Sletning" class="btn btn-danger" />
         </div>
     </p>
 </form>

@@ -14,14 +14,12 @@
     </div>
     <div class="form-group">
         <label asp-for="Event.Price" class="control-label"></label>
-        <textarea asp-for="Event.Price" class="form-control" style="height: 150px;"></textarea>
+        <input asp-for="Event.Price" class="form-control" />
         <span asp-validation-for="Event.Price" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Event.DatetimeList" class="control-label"></label>
-        <select asp-for="Event.DatetimeList" asp-items="@(new SelectList(Categories.AllowedCategories))">
-            <option value="">Vælg Dato</option>
-        </select>
+        <input asp-for="Event.DatetimeList" type="datetime-local" class="form-control" />
         <span asp-validation-for="Event.DatetimeList" class="text-danger"></span>
     </div>
     <div class="form-group">
